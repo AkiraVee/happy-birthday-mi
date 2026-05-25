@@ -1,29 +1,253 @@
-<html>
-    <head>
-        <title>Happy Birthday Mi</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Birthday 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
 
-    <!-- Header Section Starts -->    
-     
-        <header>
-            <a href="#" class="logo">Happy Birthday Mi<span>!</span></a>
-        
-            <nav class="navbar">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
-            </nav>
+<!-- Floating Particles -->
+<canvas id="particles"></canvas>
 
-        <div class="icons">
-            <i class="fas fa-search" id="search-btn"></i>
-            <i class="fas fa-bars" id="menu-btn"></i>
+<!-- Welcome Screen -->
+<div id="welcome">
+  <div class="welcome-stars" id="welcomeStars"></div>
+  <div class="welcome-content">
+    <div class="welcome-tag">A special gift, just for you</div>
+    <h1 class="welcome-title">Happy<br><em>Birthday</em></h1>
+    <button class="start-btn" onclick="startJourney()">Open Your Gift ✦</button>
+  </div>
+</div>
+
+<!-- Navigation Dots -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- Main -->
+<div id="main">
+
+  <!-- 1. Greeting -->
+  <section id="greeting" data-nav="🎂">
+    <div class="greeting-number">🎂</div>
+    <div class="greeting-content reveal">
+      <div class="section-label">Today is your day</div>
+      <h2 class="greeting-main">Wishing you<br>the most <em>magical</em><br>birthday ever</h2>
+      <p class="greeting-sub">Because you deserve all the love, laughter, and cake in the world. This little corner of the internet was made entirely for you. 💙</p>
+      <div class="balloon-row">
+        <span class="balloon">🎈</span>
+        <span class="balloon">🎉</span>
+        <span class="balloon">🎂</span>
+        <span class="balloon">🎁</span>
+        <span class="balloon">🌟</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Quotes -->
+  <section id="quotes" data-nav="💬">
+    <div class="section-label reveal">Words we love</div>
+    <h2 class="section-title reveal">Favorite Quotes &<br><em>Inside Jokes</em></h2>
+    <div class="divider reveal"></div>
+    <div class="quotes-grid">
+      <div class="quote-card reveal" onclick="openModal('Our Classic 😂', 'Replace this with your favorite inside joke! Something only the two of you would understand — the funnier the better.')">
+        <p class="quote-text">Replace this with your favorite inside joke that always makes you both laugh until you cry.</p>
+        <p class="quote-attr">— Your inside joke here</p>
+      </div>
+      <div class="quote-card reveal" onclick="openModal('Favorite Quote', 'Add a meaningful quote that resonates with the birthday person — something they love or live by.')">
+        <p class="quote-text">The best is yet to come, and it's going to be wonderful.</p>
+        <p class="quote-attr">— Add your favorite quote</p>
+      </div>
+      <div class="quote-card reveal" onclick="openModal('Another Classic 💙', 'A third quote or joke — maybe something sweet and sentimental, or another hilarious memory.')">
+        <p class="quote-text">Life is better when we're laughing — especially when we're laughing together.</p>
+        <p class="quote-attr">— One more memory</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Timeline -->
+  <section id="timeline" data-nav="📅">
+    <div class="section-label reveal">A journey together</div>
+    <h2 class="section-title reveal">Timeline of<br><em>Memories</em></h2>
+    <div class="divider reveal"></div>
+    <div class="timeline-wrap">
+      <div class="timeline-line"></div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-emoji">🌟</div>
+          <div class="tl-year">Year 1</div>
+          <div class="tl-event">Add the first milestone — how you met, a first adventure, or the very beginning of your story together.</div>
         </div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-emoji">🎉</div>
+          <div class="tl-year">Year 2</div>
+          <div class="tl-event">A funny or unforgettable moment that changed everything. The inside story behind your best memory.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-emoji">✈️</div>
+          <div class="tl-year">Year 3</div>
+          <div class="tl-event">That one trip, outing, or adventure you still talk about. The one that became a legend.</div>
+        </div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-emoji">💙</div>
+          <div class="tl-year">Today</div>
+          <div class="tl-event">Right now — celebrating you and all the amazing memories still to come. Happy Birthday!</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        </header>
+  <!-- 4. Photos -->
+  <section id="photos" data-nav="📸">
+    <div class="section-label reveal">A picture is worth a thousand words</div>
+    <h2 class="section-title reveal">Our Favorite<br><em>Moments</em></h2>
+    <div class="divider reveal"></div>
+    <div class="photos-grid">
+      <div class="photo-card reveal" onclick="openModal('📸 Photo 1', 'Add a caption for this photo! Upload your images and replace the placeholder cards with real memories.')">
+        <div class="photo-placeholder">
+          <span class="photo-icon">🌸</span>
+          <span class="photo-slot">Add your photo here</span>
+        </div>
+        <div class="photo-caption">Your caption goes here — hover to reveal!</div>
+      </div>
+      <div class="photo-card reveal" style="transition-delay:.1s" onclick="openModal('📸 Photo 2', 'Every photo tells a story. Add a caption that captures the magic of that moment.')">
+        <div class="photo-placeholder">
+          <span class="photo-icon">🎊</span>
+          <span class="photo-slot">Add your photo here</span>
+        </div>
+        <div class="photo-caption">Another wonderful memory to treasure forever.</div>
+      </div>
+      <div class="photo-card reveal" style="transition-delay:.2s" onclick="openModal('📸 Photo 3', 'The best photos are the candid ones — the ones you didn\'t plan but ended up being your favorites.')">
+        <div class="photo-placeholder">
+          <span class="photo-icon">💫</span>
+          <span class="photo-slot">Add photo here</span>
+        </div>
+        <div class="photo-caption">Candid moments are the best moments.</div>
+      </div>
+      <div class="photo-card reveal" style="transition-delay:.3s" onclick="openModal('📸 Photo 4', 'Upload a group photo, a silly selfie, or most cherished memory together.')">
+        <div class="photo-placeholder">
+          <span class="photo-icon">🌟</span>
+          <span class="photo-slot">Add your photo here</span>
+        </div>
+        <div class="photo-caption">This one always makes us smile.</div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Header Section Ends -->
+  <!-- 5. Quiz -->
+  <section id="quiz" data-nav="🎯">
+    <div class="section-label reveal">A little test of love</div>
+    <h2 class="section-title reveal">How Well Do You<br><em>Know Us?</em></h2>
+    <div class="divider reveal"></div>
+    <div class="quiz-box reveal" id="quizBox"></div>
+  </section>
 
-    </body>
-</html> 
+  <!-- 6. Music -->
+  <section id="music" data-nav="🎵">
+    <div class="section-label reveal">Our soundtrack</div>
+    <h2 class="section-title reveal">The <em>Playlist</em><br>Just for You</h2>
+    <div class="divider reveal"></div>
+    <div class="music-player reveal">
+      <div class="now-playing" id="nowPlaying">♪ Select a track to play</div>
+      <div class="track-list" id="trackList"></div>
+      <div class="player-controls">
+        <button class="ctrl-btn" onclick="prevTrack()" title="Previous">⏮</button>
+        <button class="ctrl-btn play" onclick="togglePlay()" id="playBtn">▶</button>
+        <button class="ctrl-btn" onclick="nextTrack()" title="Next">⏭</button>
+      </div>
+      <div class="progress-bar" onclick="seekTrack(event)">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="music-note">✦ Add your own songs by customizing the playlist in script.js</p>
+    </div>
+  </section>
+
+  <!-- 7. Videos -->
+  <section id="videos" data-nav="🎬">
+    <div class="section-label reveal">Moving memories</div>
+    <h2 class="section-title reveal">Video<br><em>Clips</em></h2>
+    <div class="divider reveal"></div>
+    <div class="videos-grid">
+      <div class="video-card reveal" onclick="openModal('🎬 Video 1', 'Add your video links here! You can embed YouTube, TikTok, or any video platform. Just replace this card with your actual video embed.')">
+        <div class="video-thumb">
+          <span>🎂</span>
+          <div class="play-overlay"><div class="play-circle">▶</div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Memory Video 1</div>
+          <div class="video-desc">Click to add your video here</div>
+        </div>
+      </div>
+      <div class="video-card reveal" style="transition-delay:.1s" onclick="openModal('🎬 Video 2', 'Your second video goes here — a birthday message, a funny clip, or a montage of your favorite memories.')">
+        <div class="video-thumb">
+          <span>🎉</span>
+          <div class="play-overlay"><div class="play-circle">▶</div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Memory Video 2</div>
+          <div class="video-desc">Add another special clip</div>
+        </div>
+      </div>
+      <div class="video-card reveal" style="transition-delay:.2s" onclick="openModal('🎬 Video 3', 'Maybe a birthday message from friends and family? A collage of voice notes? Get creative!')">
+        <div class="video-thumb">
+          <span>🌟</span>
+          <div class="play-overlay"><div class="play-circle">▶</div></div>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Memory Video 3</div>
+          <div class="video-desc">A final special surprise</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Letter -->
+  <section id="letter" data-nav="💌">
+    <div class="section-label reveal">From the heart</div>
+    <h2 class="section-title reveal">A Birthday<br><em>Letter</em></h2>
+    <div class="divider reveal"></div>
+    <div class="letter-envelope reveal">
+      <div class="letter-stamp">💙</div>
+      <div class="letter-date">On this very special day</div>
+      <div class="letter-salutation">Dear [Name],</div>
+      <div class="letter-body">
+        <p>Replace this with your heartfelt birthday letter. Write about your favorite memories, what makes this person so special to you, and all the reasons why today should be celebrated big.</p>
+        <p>Tell them about the little things you notice and love — the way they laugh, the way they care, the way they make every room brighter just by walking in.</p>
+        <p>Write about your hopes for them, the adventures you still want to share, and all the things you're grateful for. Make it uniquely, perfectly theirs.</p>
+        <p>And most of all — remind them that they are deeply, completely, unconditionally loved. Today and every day after. 🎂</p>
+      </div>
+      <div class="letter-sign">With all the love in the world,</div>
+      <div class="letter-xo">xoxo ✦</div>
+    </div>
+    <button class="final-confetti-btn" onclick="launchCelebration()">🎉 Celebrate!</button>
+  </section>
+
+</div>
+
+<!-- Surprise Hint -->
+<div class="surprise-hint" id="surpriseHint">✦ Click the quote cards for hidden surprises!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
