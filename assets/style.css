@@ -95,20 +95,3 @@ nav ul li a {
 
 /* Start of Home */
 
-.hero .hero-left {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  justify-content: left;
-  gap: 1em;
-  font-weight: bold;
-  font-style: italic;
-}
-
-.hero .hero-right {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  justify-content: right;
-  gap: 1em;
-}
