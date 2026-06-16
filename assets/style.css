@@ -111,13 +111,12 @@
   /* Start of Home */
 
   .hero {
-    position: relative;
-    min-height: calc(100vh - 60px);
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 6em 0 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5em;
+  min-height: calc(100vh - 80px);
+  padding: 2em 3em;
   }
 
   /* Style for the left side of the hero section */
@@ -229,3 +228,18 @@
   .hero .btn:hover .arrow {
     transform: translateX(4px);
   }
+
+
+
+  /* Start of Songs Page */
+
+  .songs-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5em;
+  min-height: calc(100vh - 80px);
+  padding: 2em 3em;
+}
+
+
