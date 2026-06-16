@@ -271,5 +271,22 @@
     display: block;
   }
 
-  
+  .song-info {
+    text-align: center;
+  }
+
+  .song-title-display {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 0;
+  }
+
+  .song-artist-display {
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: transformation 0.2s  ease, color 0.2s ease;
+  }
 
