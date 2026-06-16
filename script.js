@@ -8,7 +8,7 @@ const songs = [
   {
     title: "Song Title 1",
     artist: "Artist Name",
-    cover: "",          // e.g. "assets/images/cover1.jpg"
+    cover: "assets/images/bawat_piyesa.jpg",          // e.g. "assets/images/cover1.jpg"
     meaning: "Song Explanation: This song reminds me of the first time we laughed until we cried. Every time it plays, it takes me back to that exact moment."
   },
   {
