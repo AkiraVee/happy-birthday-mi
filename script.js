@@ -37,3 +37,62 @@ const songs = [
   }
 ];
  
+let current = 0;
+ 
+const albumImg    = document.getElementById('album-img');
+const songTitle   = document.getElementById('song-title');
+const songArtist  = document.getElementById('song-artist');
+const meaningTitle = document.getElementById('meaning-title');
+const meaningText  = document.getElementById('meaning-text');
+const playlistEl   = document.getElementById('playlist');
+const prevBtn      = document.getElementById('prev-btn');
+const nextBtn      = document.getElementById('next-btn');
+
+// Build playlist
+songs.forEach((song, i) => {
+  const li = document.createElement('li');
+  li.className = 'playlist-item';
+  li.dataset.index = i;
+  li.innerHTML = `
+    <span class="playlist-num">${i + 1}</span>
+    <span class="playlist-info">
+      <span class="playlist-song-title">${song.title}</span>
+      <span class="playlist-song-artist">${song.artist}</span>
+    </span>
+  `;
+  li.addEventListener('click', () => goTo(i));
+  playlistEl.appendChild(li);
+});
+ 
+function goTo(index) {
+  current = (index + songs.length) % songs.length;
+  const song = songs[current];
+
+  // Update album art
+  if (song.cover) {
+    albumImg.src = song.cover;
+    albumImg.style.display = 'block';
+  } else {
+    albumImg.src = '';
+    albumImg.style.display = 'none';
+  }
+ 
+  // Update left panel
+  songTitle.textContent  = song.title;
+  songArtist.textContent = song.artist;
+ 
+  // Update middle card
+  meaningTitle.textContent = song.title;
+  meaningText.textContent  = song.meaning;
+ 
+  // Update active playlist item
+  document.querySelectorAll('.playlist-item').forEach((el, i) => {
+    el.classList.toggle('active', i === current);
+  });
+}
+ 
+prevBtn.addEventListener('click', () => goTo(current - 1));
+nextBtn.addEventListener('click', () => goTo(current + 1));
+ 
+// Init
+goTo(0);
