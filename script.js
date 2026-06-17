@@ -81,6 +81,38 @@ const playlistEl   = document.getElementById('playlist');
 const prevBtn      = document.getElementById('prev-btn');
 const nextBtn      = document.getElementById('next-btn');
 const playBtn      = document.getElementById('play-btn');
+const progressBar  = document.getElementById('progress-bar');
+const progressFill = document.getElementById('progress-fill');
+const currentTime  = document.getElementById('current-time');
+const totalTime    = document.getElementById('total-time');
+ 
+// Format seconds as m:ss
+function formatTime(secs) {
+  if (isNaN(secs)) return '0:00';
+  const m = Math.floor(secs / 60);
+  const s = Math.floor(secs % 60).toString().padStart(2, '0');
+  return `${m}:${s}`;
+}
+ 
+// Update progress bar as song plays
+audio.addEventListener('timeupdate', () => {
+  if (!audio.duration) return;
+  const pct = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = pct + '%';
+  currentTime.textContent  = formatTime(audio.currentTime);
+});
+ 
+// Show total duration once metadata loads
+audio.addEventListener('loadedmetadata', () => {
+  totalTime.textContent = formatTime(audio.duration);
+});
+ 
+// Click on bar to seek
+progressBar.addEventListener('click', (e) => {
+  const rect = progressBar.getBoundingClientRect();
+  const pct  = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = pct * audio.duration;
+});
  
 // ─── Build Playlist ──────────────────────────────────────────────
 songs.forEach((song, i) => {

@@ -340,6 +340,39 @@
   transform: scale(1.1);
 }
 
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  width: 100%;
+}
+ 
+.time-label {
+  font-size: 0.72em;
+  color: var(--text-color);
+  opacity: 0.7;
+  flex-shrink: 0;
+  font-family: 'Playfair Display', serif;
+}
+ 
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background-color: var(--card-color);
+  border-radius: 99px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+ 
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent-color);
+  border-radius: 99px;
+  transition: width 0.1s linear;
+}
+
 .songs-middle {
   background-color: var(--secondary-color);
   border-radius: 20px;
