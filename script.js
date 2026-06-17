@@ -42,6 +42,9 @@ const songs = [
   }
 ];
  
+
+/* State */
+
 let current = 0;
 
  
