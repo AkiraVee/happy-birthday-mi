@@ -5,7 +5,7 @@ const songs = [
     title:   "Song Title 1",
     artist:  "Artist Name",
     cover:   "assets/images/bawat_piyesa.jpg",
-    audio:   "assets/music/bawat_piyesa.mp3",
+    audio:   "assets/audios/bawat_piyesa.mp3",
     meaning: "This song reminds me of the first time we laughed until we cried. Every time it plays, it takes me back to that exact moment."
   },
   {
