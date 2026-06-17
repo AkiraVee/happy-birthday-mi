@@ -9,7 +9,7 @@ const songs = [
     title: "Song Title 1",
     artist: "Artist Name",
     cover: "assets/images/bawat_piyesa.jpg",          // e.g. "assets/images/cover1.jpg"
-    audio: "assets/audios/",
+    audio: "assets/audios/bawat_piyesa.mp3",
     meaning: "Song Explanation: This song reminds me of the first time we laughed until we cried. Every time it plays, it takes me back to that exact moment."
   },
   {
@@ -46,6 +46,40 @@ const songs = [
 /* State */
 
 let current = 0;
+let isPlaying = 0;
+
+const audio = new Audio();
+
+audio.addEventListener('ended', () => {
+  if(!songs[current].audio) return;
+  audio.play().then(() => {
+    isPlaying = true;
+    updatePlayBtn();
+  }).catch(() => {
+  }); 
+});
+
+
+function playAudio() {
+  if (!songs[current].audio) return;
+  audio.play().then(() => {
+    isPlaying = true;
+    updatePlayBtn();
+  }).catch(() => {
+    // Autoplay blocked — user must tap play
+  });
+}
+
+function pauseAudio() {
+  audio.pause();
+  isPlaying = false;
+  updatePlayBtn();
+}
+ 
+function updatePlayBtn() {
+  playBtn.innerHTML = isPlaying ? '&#9646;&#9646;' : '&#9654;';
+  playBtn.title     = isPlaying ? 'Pause' : 'Play';
+}
 
  
 const albumImg    = document.getElementById('album-img');
