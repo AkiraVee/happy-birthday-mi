@@ -335,6 +335,11 @@
   box-shadow: 0 4px 12px rgba(44, 95, 119, 0.2);
 }
 
+.play-btn:hover {
+  background-color: var(--text-color);
+  transform: scale(1.1);
+}
+
 .songs-middle {
   background-color: var(--secondary-color);
   border-radius: 20px;
