@@ -290,6 +290,12 @@
     transition: transformation 0.2s  ease, color 0.2s ease;
   }
 
+  .song-controls {
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+  }
+
   .song-section {
     display: flex;
     gap: 2.5em;
@@ -310,6 +316,23 @@
 .arrow-btn:hover {
   color: var(--text-color);
   transform: scale(1.2);
+}
+
+.play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2 ease, transform 0.2 ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(44, 95, 119, 0.2);
 }
 
 .songs-middle {
