@@ -386,4 +386,43 @@
   justify-content: center;
 }
 
+.songs-middle {
+  background-color: var(--secondary-color);
+  border-radius: 20px;
+  padding: 2.5em 2.8em;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  min-height: 320px;
+  justify-content: center;
+}
+ 
+.meaning-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-color);
+  margin: 0;
+  text-align: left;
+}
+ 
+.meaning-title {
+  font-size: 1.3em;
+  font-weight: 800;
+  color: var(--text-color);
+  margin: 0;
+  text-align: center;
+}
+ 
+.meaning-text {
+  font-size: 0.98em;
+  font-style: italic;
+  color: var(--text-color);
+  line-height: 1.75;
+  text-align: center;
+  margin: 0;
+  opacity: 0.85;
+}
 
