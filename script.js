@@ -205,7 +205,6 @@ goTo(0);
 
 const section1 = {
 
-
   title: "How Well Do You Know Us?",
   desc:  "Answer these questions and see how well you really know us!",
   questions: [
@@ -284,3 +283,171 @@ const section2 = {
     },
   ]
 };
+
+// Result Messages
+
+function getResultMessage(score, total) {
+  const pct = score / total;
+  if (pct === 1)   return "Perfect score! You know us better than we know ourselves! 🎉";
+  if (pct >= 0.8)  return "Amazing! You clearly pay attention! 💛";
+  if (pct >= 0.6)  return "Not bad! You know quite a bit about us! 😊";
+  if (pct >= 0.4)  return "Getting there! We need more quality time together 😄";
+  return                  "Looks like someone hasn't been paying attention! 😂";
+}
+ 
+
+// State
+
+const sections   = [section1, section2];
+let sectionIndex = 0;
+let questionIndex = 0;
+let score        = 0;
+let answered     = false;
+ 
+// Flatten for total count
+const totalQuestions = sections.reduce((n, s) => n + s.questions.length, 0);
+let globalIndex = 0;
+
+
+
+// DOM References
+
+const introCard      = document.getElementById('quiz-intro');
+const introTag       = document.getElementById('intro-tag');
+const introTitle     = document.getElementById('intro-title');
+const introDesc      = document.getElementById('intro-desc');
+const introBtn       = document.getElementById('intro-btn');
+const quizCard       = document.getElementById('quiz-card');
+const quizCounter    = document.getElementById('quiz-counter');
+const quizScoreEl    = document.getElementById('quiz-score');
+const quizSectionLbl = document.getElementById('quiz-section-label');
+const quizQuestion   = document.getElementById('quiz-question');
+const quizChoices    = document.getElementById('quiz-choices');
+const quizPhotoWrap  = document.getElementById('quiz-photo-wrap');
+const quizPhoto      = document.getElementById('quiz-photo');
+const quizResults    = document.getElementById('quiz-results');
+const resultsScore   = document.getElementById('results-score');
+const resultsMsg     = document.getElementById('results-message');
+const restartBtn     = document.getElementById('restart-btn');
+
+
+
+// Show Section Intro
+
+function showIntro(idx) {
+  const sec = sections[idx];
+  introTag.textContent   = `Section ${idx + 1} of ${sections.length}`;
+  introTitle.textContent = sec.title;
+  introDesc.textContent  = sec.desc;
+ 
+  quizCard.style.display    = 'none';
+  quizResults.style.display = 'none';
+  introCard.style.display   = 'flex';
+}
+ 
+
+// Render Question
+
+function renderQuestion() {
+  answered = false;
+  const sec = sections[sectionIndex];
+  const q   = sec.questions[questionIndex];
+ 
+  quizCounter.textContent    = `Question ${globalIndex + 1} of ${totalQuestions}`;
+  quizScoreEl.textContent    = `Score: ${score}`;
+  quizSectionLbl.textContent = `Section ${sectionIndex + 1}: ${sec.title}`;
+  quizQuestion.textContent   = q.question;
+ 
+  // Photo (Section 2)
+  if (q.photo) {
+    quizPhoto.src             = q.photo;
+    quizPhotoWrap.style.display = 'block';
+  } else {
+    quizPhotoWrap.style.display = 'none';
+  }
+ 
+  // Choices
+  quizChoices.innerHTML = '';
+  q.choices.forEach(choice => {
+    const li       = document.createElement('li');
+    li.className   = 'quiz-choice';
+    li.textContent = choice;
+    li.addEventListener('click', () => selectAnswer(li, choice, q.answer));
+    quizChoices.appendChild(li);
+  });
+}
+ 
+
+// Handle Answer
+
+function selectAnswer(el, chosen, correct) {
+  if (answered) return;
+  answered = true;
+ 
+  if (chosen === correct) score++;
+ 
+  document.querySelectorAll('.quiz-choice').forEach(li => {
+    li.classList.add('disabled');
+    if (li.textContent === correct)        li.classList.add('correct');
+    else if (li === el && chosen !== correct) li.classList.add('wrong');
+  });
+ 
+  quizScoreEl.textContent = `Score: ${score}`;
+ 
+  setTimeout(() => {
+    questionIndex++;
+    globalIndex++;
+ 
+    const sec = sections[sectionIndex];
+ 
+    if (questionIndex < sec.questions.length) {
+      // More questions in this section
+      renderQuestion();
+    } else if (sectionIndex + 1 < sections.length) {
+      // Move to next section intro
+      sectionIndex++;
+      questionIndex = 0;
+      quizCard.style.display = 'none';
+      showIntro(sectionIndex);
+    } else {
+      // All done
+      showResults();
+    }
+  }, 900);
+}
+
+// Results
+
+function showResults() {
+  quizCard.style.display    = 'none';
+  introCard.style.display   = 'none';
+  quizResults.style.display = 'flex';
+  resultsScore.textContent  = `You scored ${score} / ${totalQuestions}`;
+  resultsMsg.textContent    = getResultMessage(score, totalQuestions);
+}
+ 
+
+// Restart
+
+restartBtn.addEventListener('click', () => {
+  sectionIndex  = 0;
+  questionIndex = 0;
+  globalIndex   = 0;
+  score         = 0;
+  answered      = false;
+  showIntro(0);
+});
+ 
+
+// Intro Button → Start Section
+
+introBtn.addEventListener('click', () => {
+  introCard.style.display  = 'none';
+  quizCard.style.display   = 'flex';
+  renderQuestion();
+});
+ 
+
+// Init
+
+showIntro(0);

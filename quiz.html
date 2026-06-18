@@ -30,29 +30,45 @@
 
   <!--  End of Navigation Bar -->
 
+
+  <!-- Start of Quiz -->
+
   <section class="quiz-section">
  
-    <!-- Quiz Card -->
-    <div class="quiz-card" id="quiz-card">
-      <div class="quiz-card-header">
-        <span class="quiz-counter" id="quiz-counter">Question 1 of 10</span>
-        <span class="quiz-score" id="quiz-score">Score: 0</span>
-      </div>
-      <p class="quiz-question" id="quiz-question">Question Placeholder:</p>
-      <ul class="quiz-choices" id="quiz-choices">
-        <!-- Populated by JS -->
-      </ul>
+    <!-- Section Intro Card -->
+    <div class="quiz-card quiz-intro" id="quiz-intro">
+      <p class="quiz-section-tag" id="intro-tag">Section 1 of 2</p>
+      <h2 class="quiz-intro-title" id="intro-title">How Well Do You Know Us?</h2>
+      <p class="quiz-intro-desc" id="intro-desc">Answer these questions and see how well you really know us!</p>
+      <button class="quiz-restart-btn" id="intro-btn">Start</button>
     </div>
  
-    <!-- Results Card (hidden until end) -->
+    <!-- Quiz Card -->
+    <div class="quiz-card" id="quiz-card" style="display:none;">
+      <div class="quiz-card-header">
+        <span class="quiz-counter" id="quiz-counter">Question 1 of 6</span>
+        <span class="quiz-score" id="quiz-score">Score: 0</span>
+      </div>
+      <!-- Memory photo (Section 2 only) -->
+      <div class="quiz-photo-wrap" id="quiz-photo-wrap" style="display:none;">
+        <img id="quiz-photo" src="" alt="Memory Photo">
+      </div>
+      <p class="quiz-section-label" id="quiz-section-label">Section 1: How Well Do You Know Us?</p>
+      <p class="quiz-question" id="quiz-question">Question Placeholder</p>
+      <ul class="quiz-choices" id="quiz-choices"></ul>
+    </div>
+ 
+    <!-- Results Card -->
     <div class="quiz-card quiz-results" id="quiz-results" style="display:none;">
       <p class="results-label">Quiz Complete!</p>
-      <p class="results-score" id="results-score">You scored 0 / 10</p>
+      <p class="results-score" id="results-score">You scored 0 / 11</p>
       <p class="results-message" id="results-message"></p>
       <button class="quiz-restart-btn" id="restart-btn">Try Again</button>
     </div>
  
   </section>
+
+  <!-- End of Quiz -->
 
 </body>
 </html>
