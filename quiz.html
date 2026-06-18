@@ -30,8 +30,29 @@
 
   <!--  End of Navigation Bar -->
 
-  <script src="script.js"> </script>
-
+  <section class="quiz-section">
+ 
+    <!-- Quiz Card -->
+    <div class="quiz-card" id="quiz-card">
+      <div class="quiz-card-header">
+        <span class="quiz-counter" id="quiz-counter">Question 1 of 10</span>
+        <span class="quiz-score" id="quiz-score">Score: 0</span>
+      </div>
+      <p class="quiz-question" id="quiz-question">Question Placeholder:</p>
+      <ul class="quiz-choices" id="quiz-choices">
+        <!-- Populated by JS -->
+      </ul>
+    </div>
+ 
+    <!-- Results Card (hidden until end) -->
+    <div class="quiz-card quiz-results" id="quiz-results" style="display:none;">
+      <p class="results-label">Quiz Complete!</p>
+      <p class="results-score" id="results-score">You scored 0 / 10</p>
+      <p class="results-message" id="results-message"></p>
+      <button class="quiz-restart-btn" id="restart-btn">Try Again</button>
+    </div>
+ 
+  </section>
 
 </body>
 </html>
