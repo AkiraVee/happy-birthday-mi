@@ -200,3 +200,87 @@ goTo(0);
 /* ===================
     Start of Quiz
    =================== */
+
+// SECTION 1: How Well Do You Know Us?  (6 questions, mix of mc/tf)
+
+const section1 = {
+
+
+  title: "How Well Do You Know Us?",
+  desc:  "Answer these questions and see how well you really know us!",
+  questions: [
+    {
+      type:    "mc",
+      question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"        
+    },
+    {
+      type:    "mc",
+      question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"
+    },
+    {
+      type:    "tf",
+      question: "something",
+      choices:  ["True", "False"],
+      answer:   "True"
+    },
+    {
+      type:    "mc",
+      question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"
+    },
+    {
+      type:    "tf",
+      question: "something",
+      choices:  ["True", "False"],
+      answer:   "True"
+    },
+    {
+      type:    "mc",
+      question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"
+    },
+  ]
+};
+
+// SECTION 2: Guess the Memory  (4 questions with photos)
+
+const section2 = {
+  title: "Guess the Memory",
+  desc:  "Look at the photo and answer the question about this memory!",
+  questions: [
+    {
+      type:    "mc",
+      photo:   "assets/images/.jpg",
+     question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"
+    },
+    {
+      type:    "tf",
+      photo:   "assets/images/.jpg",
+      question: "This photo was taken on a special occasion.",
+      choices:  ["True", "False"],
+      answer:   "True"
+    },
+    {
+      type:    "mc",
+      photo:   "assets/images/.jpg",
+     question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"
+    },
+    {
+      type:    "mc",
+      photo:   "assets/images/.jpg",
+     question: "something",
+      choices:  ["A", "B", "C", "D"],
+      answer:   "C"
+    },
+  ]
+};
