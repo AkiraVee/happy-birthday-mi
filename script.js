@@ -4,6 +4,8 @@
 
 // ─── Song Data ───────────────────────────────────────────────────
 
+if (document.getElementById('play-btn')) {
+
 const songs = [
   {
     title:   "Bawat Piyesa",
@@ -197,9 +199,13 @@ goTo(0);
 
 // End of Song
 
+}
+
 /* ===================
     Start of Quiz
    =================== */
+
+if (document.getElementById('intro-btn')) {
 
 // SECTION 1: How Well Do You Know Us?  (6 questions, mix of mc/tf)
 
@@ -255,7 +261,7 @@ const section2 = {
   questions: [
     {
       type:    "mc",
-      photo:   "assets/images/.jpg",
+      photo:   "assets/images/bawat_piyesa.jpg",
      question: "something",
       choices:  ["A", "B", "C", "D"],
       answer:   "C"
@@ -451,3 +457,7 @@ introBtn.addEventListener('click', () => {
 // Init
 
 showIntro(0);
+
+}  
+
+// End of Quiiz

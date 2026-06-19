@@ -602,6 +602,65 @@
   gap: 1.4em;
 }
  
+/* Intro Card */
+.quiz-intro {
+  text-align: center;
+  align-items: center;
+  gap: 1.2em;
+}
+ 
+.quiz-section-tag {
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin: 0;
+}
+ 
+.quiz-intro-title {
+  font-size: 1.6em;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.2;
+}
+ 
+.quiz-intro-desc {
+  font-size: 0.95em;
+  font-style: italic;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin: 0;
+}
+ 
+/* Section label inside quiz card */
+.quiz-section-label {
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  margin: 0;
+}
+ 
+/* Memory photo */
+.quiz-photo-wrap {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  max-height: 200px;
+}
+ 
+.quiz-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+ 
 .results-label {
   font-size: 0.82em;
   font-weight: 700;
@@ -646,5 +705,4 @@
   background-color: var(--text-color);
   transform: translateY(-2px);
 }
-
 /* End of Quiz */
