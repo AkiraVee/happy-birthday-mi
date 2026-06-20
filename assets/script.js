@@ -1,4 +1,29 @@
 /* ===================
+    Start of Nav Highlight
+   =================== */
+
+// Highlight the nav link matching the current page, on every page load
+(function highlightActiveNavLink() {
+  const navLinks = document.querySelectorAll('nav ul li a');
+  if (!navLinks.length) return;
+
+  // Get current page filename (defaults to home.html if path ends in /)
+  let currentPage = window.location.pathname.split('/').pop();
+  if (!currentPage) currentPage = 'home.html';
+
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+})();
+
+// End of Nav Highlight
+
+
+
+/* ===================
     Start of Memories
    =================== */
  

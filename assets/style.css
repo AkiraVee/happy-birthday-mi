@@ -1,4 +1,4 @@
-  :root {
+:root {
     --background-color: #CFE9F0;
     --text-color: #2C5F77;
     --secondary-color: #C6DCF0;
@@ -9,16 +9,6 @@
 
 
   /* Nav Bar */
-
-body {
-  background-color: var(--background-color);
-  font-family: 'Playfair Display', serif;
-  overflow: hidden;
-}
-
-html {
-  overflow: hidden;
-}
 
   .header {
     width: 100%;
@@ -41,6 +31,22 @@ html {
     font-family: 'Playfair Display', serif; 
     padding-right: 5em;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  nav ul li a.active {
+    color: var(--accent-color);
+  }
+
+  nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 5em;
+    bottom: -0.3em;
+    height: 3px;
+    border-radius: 99px;
+    background-color: var(--accent-color);
   }
 
   /* Nav Bar End */
@@ -70,6 +76,7 @@ html {
     text-align: center;
     font-size: 1.5em;
     margin-top: 0.5em;
+    margin-bottom: 1em;
     color: var(--text-color);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   }
@@ -77,7 +84,8 @@ html {
   .title {
     text-shadow: 2px 2px 4px var(--accent-color);
     align-self: center;
-    font-size: 4em;
+    font-size: 3em;
+    margin-top: 0.5em;
     margin-bottom: 0.5em;
     color: var(--text-color);
     font-weight: bold;
@@ -144,11 +152,11 @@ html {
     left: 1.2em;
     display: flex;
     flex-direction: column;
-    z-index: 3;
+    z-index: 2;
   }
 
   .date .day {
-    font-size: 4.4em;
+    font-size: 3.8em;
     font-style: italic;
     font-weight: bold;
     color: var(--accent-color);
@@ -163,7 +171,6 @@ html {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     font-style: italic;
     font-weight: bold;
-    margin-left: -1.3em;
   }
 
   .hero-image {
@@ -200,15 +207,13 @@ html {
 
 
   .hero-title {
-    font-size: 6.2em;
+    font-size: 3.2em;
     font-weight: bold;
     font-style: italic;
     color: var(--accent-color);
     line-height: 1.05;
-    margin-left: -1.3em;
+    margin: 0 0 0.6em 0;
     text-shadow: 2px 2px 4px var(--secondary-color);
-    align-self: right;
-    margin-top: -1.7em;
   }
 
   .hero-title br {
@@ -217,16 +222,13 @@ html {
   }
 
   .hero-description {
-    font-size: 1.4em;
+    font-size: 0.95em;
     font-style: italic;
     color: var(--text-color);
     line-height: 1.6;
     margin: 0 0 1.4em 0;
-    text-align: right;
-    max-width: 620px;
-    margin-left: -1.3em;
-    margin-top: -1.5em;
-    align-self: right;
+    text-align: center;
+    max-width: 420px;
   }
 
   .hero .btn {
@@ -241,6 +243,7 @@ html {
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 5px;
+    
   }
 
   .hero .btn:hover {
@@ -257,7 +260,7 @@ html {
     transform: scale(1.2) rotate(15deg);
   }
 
-  /* End of Home */
+
 
   /* Start of Songs Page */
 
@@ -733,13 +736,13 @@ html {
   background-color: var(--text-color);
   transform: translateY(-2px);
 }
-
 /* End of Quiz */
+
 
 /* ================================
    Memories Page
    ================================ */
- 
+
 .memories-section {
   display: flex;
   flex-direction: column;
@@ -749,11 +752,11 @@ html {
   padding: 1.5em 3em 2em;
   gap: 1.5em;
 }
- 
+
 .memories-heading {
   text-align: center;
 }
- 
+
 .memories-heading h2 {
   font-size: 2em;
   font-weight: 800;
@@ -761,7 +764,7 @@ html {
   color: var(--text-color);
   margin: 0 0 0.2em;
 }
- 
+
 .memories-heading p {
   font-size: 0.9em;
   font-style: italic;
@@ -769,7 +772,7 @@ html {
   opacity: 0.6;
   margin: 0;
 }
- 
+
 .memories-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -778,7 +781,7 @@ html {
   max-width: 900px;
   padding: 1em 0;
 }
- 
+
 .memory-card {
   --rotate: 0deg;
   border-radius: 6px;
@@ -791,13 +794,13 @@ html {
   box-shadow: 0 6px 16px rgba(44, 95, 119, 0.18);
   transform: rotate(var(--rotate));
 }
- 
+
 .memory-card:hover {
   transform: rotate(0deg) translateY(-8px) scale(1.03);
   box-shadow: 0 18px 34px rgba(44, 95, 119, 0.28);
   z-index: 5;
 }
- 
+
 /* Photo/placeholder area inside the polaroid frame */
 .memory-photo {
   width: 100%;
@@ -807,7 +810,7 @@ html {
   position: relative;
   background-color: var(--secondary-color);
 }
- 
+
 /* Tape strip across the top corner */
 .memory-card::before {
   content: '';
@@ -841,7 +844,7 @@ html {
   z-index: 3;
   pointer-events: none;
 }
- 
+
 /* Sticker graphic - position varies by corner class set in JS */
 .memory-sticker {
   position: absolute;
@@ -851,27 +854,27 @@ html {
   filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
   pointer-events: none;
 }
- 
+
 .memory-sticker.corner-br {
   bottom: -0.6em;
   right: -0.6em;
 }
- 
+
 .memory-sticker.corner-bl {
   bottom: -0.6em;
   left: -0.6em;
 }
- 
+
 .memory-sticker.corner-tr {
   top: -0.3em;
   right: -0.3em;
 }
- 
+
 .memory-sticker.corner-tl {
   top: 1.2em;
   left: -0.7em;
 }
- 
+
 /* Hover overlay with "View Memory" label */
 .memory-photo::after {
   content: 'View Memory';
@@ -889,18 +892,18 @@ html {
   opacity: 0;
   transition: opacity 0.25s ease;
 }
- 
+
 .memory-card:hover .memory-photo::after {
   opacity: 1;
 }
- 
+
 .memory-thumb {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
- 
+
 .memory-placeholder {
   width: 100%;
   height: 100%;
@@ -913,7 +916,7 @@ html {
   color: var(--card-color);
   background: linear-gradient(135deg, var(--secondary-color) 0%, var(--card-color) 100%);
 }
- 
+
 /* Modal */
 .memory-modal {
   position: fixed;
@@ -928,12 +931,12 @@ html {
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
- 
+
 .memory-modal.active {
   opacity: 1;
   pointer-events: all;
 }
- 
+
 .memory-modal-card {
   background: var(--background-color);
   border-radius: 24px;
@@ -948,11 +951,11 @@ html {
   transform: translateY(20px) scale(0.97);
   transition: transform 0.3s ease;
 }
- 
+
 .memory-modal.active .memory-modal-card {
   transform: translateY(0) scale(1);
 }
- 
+
 .modal-close {
   position: absolute;
   top: 0.9em;
@@ -972,11 +975,11 @@ html {
   z-index: 2;
   font-family: 'Playfair Display', serif;
 }
- 
+
 .modal-close:hover {
   background: rgba(44, 95, 119, 0.22);
 }
- 
+
 .modal-media {
   width: 100%;
   background: var(--secondary-color);
@@ -985,7 +988,7 @@ html {
   align-items: center;
   justify-content: center;
 }
- 
+
 .modal-media-el {
   width: 100%;
   height: auto;
@@ -993,13 +996,13 @@ html {
   max-height: 340px;
   object-fit: cover;
 }
- 
+
 .modal-placeholder {
   font-size: 3em;
   color: var(--card-color);
   padding: 2.5em;
 }
- 
+
 .modal-info {
   padding: 1.4em 1.8em 1.8em;
   display: flex;
@@ -1007,7 +1010,7 @@ html {
   gap: 0.5em;
   border-top: 2px solid var(--secondary-color);
 }
- 
+
 .modal-date {
   font-size: 0.75em;
   font-weight: 700;
@@ -1015,12 +1018,265 @@ html {
   text-transform: uppercase;
   color: var(--accent-color);
 }
- 
+
 .modal-caption {
   font-size: 1em;
   font-style: italic;
   color: var(--text-color);
   line-height: 1.75;
 }
- 
+
 /* End of Memories */
+
+
+/* ======================================
+   Responsive: Tablet (<= 768px)
+   ====================================== */
+
+@media (max-width: 768px) {
+
+  /* Nav */
+  .header {
+    padding: 0.8em 0;
+  }
+
+  nav ul {
+    justify-content: center;
+    gap: 1.8em;
+    flex-wrap: wrap;
+    padding: 0 1em;
+  }
+
+  nav ul li a {
+    font-size: 1.1em;
+    padding-right: 0;
+  }
+
+  nav ul li a.active::after {
+    right: 0;
+  }
+
+  /* Landing (index.html) */
+  .title {
+    font-size: 2.2em;
+  }
+
+  .subtitle {
+    font-size: 1.2em;
+  }
+
+  /* Home Hero */
+  .hero {
+    flex-direction: column;
+    padding: 2em 1.5em;
+    gap: 2em;
+    min-height: auto;
+  }
+
+  .hero-left {
+    flex: none;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .hero-right {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.4em;
+    text-align: center;
+  }
+
+  .hero-description {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .date {
+    position: static;
+    margin-bottom: 1em;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Songs Page */
+  .songs-section {
+    flex-direction: column;
+    padding: 2em 1.5em;
+    gap: 2em;
+    min-height: auto;
+  }
+
+  .songs-left {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .songs-middle {
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .songs-right {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .playlist-label {
+    text-align: center;
+  }
+
+  .playlist-item {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .playlist-info {
+    align-items: flex-start;
+  }
+
+  .playlist-num {
+    order: -1;
+  }
+
+  /* Quiz Page */
+  .quiz-card {
+    padding: 2em 1.8em;
+    max-width: 90%;
+  }
+
+  /* Memories Page */
+  .memories-section {
+    padding: 1.5em 1.5em 2em;
+  }
+
+  .memories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    gap: 2.5em 1.2em;
+  }
+
+  .memory-modal-card {
+    max-width: 90%;
+  }
+}
+
+
+/* ======================================
+   Responsive: Phone (<= 480px)
+   ====================================== */
+
+@media (max-width: 480px) {
+
+  /* Nav */
+  nav ul {
+    gap: 1em;
+  }
+
+  nav ul li a {
+    font-size: 0.9em;
+  }
+
+  /* Landing (index.html) */
+  .title {
+    font-size: 1.7em;
+  }
+
+  .subtitle {
+    font-size: 1em;
+  }
+
+  .btn {
+    padding: 0.8em 1.8em;
+    font-size: 0.9em;
+  }
+
+  /* Home Hero */
+  .hero {
+    padding: 1.5em 1em;
+  }
+
+  .hero-image {
+    max-width: 260px;
+  }
+
+  .hero-title {
+    font-size: 1.8em;
+  }
+
+  .hero-description {
+    font-size: 0.88em;
+  }
+
+  .date .day {
+    font-size: 2.6em;
+  }
+
+  .date .date {
+    font-size: 1.3em;
+  }
+
+  /* Songs Page */
+  .songs-section {
+    padding: 1.5em 1em;
+  }
+
+  .album-art {
+    width: 160px;
+    height: 160px;
+  }
+
+  .songs-middle {
+    padding: 1.8em 1.6em;
+    min-height: auto;
+  }
+
+  .song-section {
+    gap: 1.5em;
+  }
+
+  /* Quiz Page */
+  .quiz-section {
+    padding: 1.2em;
+  }
+
+  .quiz-card {
+    padding: 1.6em 1.3em;
+    max-width: 100%;
+  }
+
+  .quiz-intro-title {
+    font-size: 1.3em;
+  }
+
+  .quiz-question {
+    font-size: 1em;
+  }
+
+  /* Memories Page */
+  .memories-heading h2 {
+    font-size: 1.5em;
+  }
+
+  .memories-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    gap: 2.2em;
+  }
+
+  .memory-sticker {
+    width: 46px;
+  }
+
+  .modal-info {
+    padding: 1.1em 1.3em 1.4em;
+  }
+}
