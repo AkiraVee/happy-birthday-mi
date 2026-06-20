@@ -462,3 +462,121 @@ showIntro(0);
 
 // End of Quiz
 
+/* ===================
+    Start of Memories
+   =================== */
+ 
+if (document.getElementById('memories-grid')) {
+ 
+  // ─── Memory Data ─────────────────────────────────────────────
+  // type: "image" or "video"
+  // src:  path to the file e.g. "assets/images/memory1.jpg"
+  //       or "assets/videos/memory1.mp4"
+ 
+  const memories = [
+    {
+      type:    "image",
+      src:     "",                              // e.g. "assets/images/memory1.jpg"
+      date:    "January 1, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "February 14, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "March 20, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "April 5, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "video",
+      src:     "",                              // e.g. "assets/videos/memory1.mp4"
+      date:    "May 18, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "June 21, 2024",
+      caption: "Caption for this memory goes here."
+    },
+  ];
+ 
+  // ─── DOM References ──────────────────────────────────────────
+  const grid       = document.getElementById('memories-grid');
+  const modal      = document.getElementById('memory-modal');
+  const modalMedia = document.getElementById('modal-media');
+  const modalDate  = document.getElementById('modal-date');
+  const modalCap   = document.getElementById('modal-caption');
+  const modalClose = document.getElementById('modal-close');
+ 
+  // ─── Build Grid ──────────────────────────────────────────────
+  memories.forEach((mem, i) => {
+    const card = document.createElement('div');
+    card.className = 'memory-card';
+ 
+    if (mem.src) {
+      if (mem.type === 'video') {
+        card.innerHTML = `<video src="${mem.src}" muted playsinline preload="metadata" class="memory-thumb"></video>`;
+      } else {
+        card.innerHTML = `<img src="${mem.src}" alt="Memory ${i + 1}" class="memory-thumb">`;
+      }
+    } else {
+      // Placeholder when no src
+      card.innerHTML = `<div class="memory-placeholder"><span>📷</span></div>`;
+    }
+ 
+    card.addEventListener('click', () => openModal(mem));
+    grid.appendChild(card);
+  });
+ 
+  // ─── Open Modal ──────────────────────────────────────────────
+  function openModal(mem) {
+    modalDate.textContent = mem.date;
+    modalCap.textContent  = mem.caption;
+ 
+    modalMedia.innerHTML = '';
+    if (mem.src) {
+      if (mem.type === 'video') {
+        modalMedia.innerHTML = `<video src="${mem.src}" controls class="modal-media-el"></video>`;
+      } else {
+        modalMedia.innerHTML = `<img src="${mem.src}" alt="Memory" class="modal-media-el">`;
+      }
+    } else {
+      modalMedia.innerHTML = `<div class="modal-placeholder"><span>📷</span></div>`;
+    }
+ 
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+ 
+  // ─── Close Modal ─────────────────────────────────────────────
+  function closeModal() {
+    modal.classList.remove('active');
+    modalMedia.innerHTML = ''; // stop video if playing
+    document.body.style.overflow = 'hidden';
+  }
+ 
+  modalClose.addEventListener('click', closeModal);
+ 
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+ 
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+ 
+} // End of Memories
