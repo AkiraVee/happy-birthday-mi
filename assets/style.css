@@ -156,7 +156,7 @@
   }
 
   .date .day {
-    font-size: 3.8em;
+    font-size: 4.4em;
     font-style: italic;
     font-weight: bold;
     color: var(--accent-color);
@@ -171,6 +171,7 @@
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     font-style: italic;
     font-weight: bold;
+    margin-left: -1.3em;
   }
 
   .hero-image {
@@ -207,13 +208,15 @@
 
 
   .hero-title {
-    font-size: 3.2em;
+    font-size: 6.2em;
     font-weight: bold;
     font-style: italic;
     color: var(--accent-color);
     line-height: 1.05;
-    margin: 0 0 0.6em 0;
+    margin-left: -1.3em;
     text-shadow: 2px 2px 4px var(--secondary-color);
+    align-self: right;
+    margin-top: -1.7em;
   }
 
   .hero-title br {
@@ -222,13 +225,16 @@
   }
 
   .hero-description {
-    font-size: 0.95em;
+    font-size: 1.4em;
     font-style: italic;
     color: var(--text-color);
     line-height: 1.6;
     margin: 0 0 1.4em 0;
-    text-align: center;
-    max-width: 420px;
+    text-align: right;
+    max-width: 620px;
+    margin-left: -1.3em;
+    margin-top: -1.5em;
+    align-self: right;
   }
 
   .hero .btn {
@@ -259,6 +265,9 @@
   .hero .btn:hover .arrow {
     transform: scale(1.2) rotate(15deg);
   }
+
+  /* End of Home */
+
 
 
 
@@ -1093,11 +1102,17 @@
   .hero-title {
     font-size: 2.4em;
     text-align: center;
+    margin-left: 0;
+    margin-top: 0;
+    align-self: center;
   }
 
   .hero-description {
     text-align: center;
     max-width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    align-self: center;
   }
 
   .date {
@@ -1105,6 +1120,10 @@
     margin-bottom: 1em;
     align-items: center;
     text-align: center;
+  }
+
+  .date .date {
+    margin-left: 0;
   }
 
   /* Songs Page */
@@ -1278,5 +1297,16 @@
 
   .modal-info {
     padding: 1.1em 1.3em 1.4em;
+  }
+}
+
+
+/* ======================================
+   Desktop Only (> 768px)
+   ====================================== */
+
+@media (min-width: 769px) {
+  body {
+    overflow: hidden;
   }
 }
