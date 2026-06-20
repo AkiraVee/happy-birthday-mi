@@ -146,11 +146,11 @@ html {
     left: 1.2em;
     display: flex;
     flex-direction: column;
-    z-index: 2;
+    z-index: 3;
   }
 
   .date .day {
-    font-size: 3.8em;
+    font-size: 4.4em;
     font-style: italic;
     font-weight: bold;
     color: var(--accent-color);
@@ -165,16 +165,25 @@ html {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     font-style: italic;
     font-weight: bold;
+    margin-left: -1.3em;
   }
 
   .hero-image {
     width: 560px;
     height: auto;
     max-height: 680px;
+    filter: drop-shadow(0 18px 30px rgba(44, 95, 119, 0.35));
+    transform: rotate(-1.5deg);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image:hover {
+    transform: rotate(0deg) scale(1.02);
   }
 
   .image-container {
-    width: 450px;
+    width: 100%;
+    max-width: 560px;
     text-align: center;
   }
 
@@ -187,15 +196,21 @@ html {
     max-width: 520px;
   }
 
+  .hero-right .btn {
+    align-self: center;
+  }
+
 
   .hero-title {
-    font-size: 3.2em;
+    font-size: 6.2em;
     font-weight: bold;
     font-style: italic;
     color: var(--accent-color);
     line-height: 1.05;
-    margin: 0 0 0.6em 0;
+    margin-left: -1.3em;
     text-shadow: 2px 2px 4px var(--secondary-color);
+    align-self: right;
+    margin-top: -1.7em;
   }
 
   .hero-title br {
@@ -204,10 +219,16 @@ html {
   }
 
   .hero-description {
-    font-size: 1.2em;
+    font-size: 1.4em;
+    font-style: italic;
     color: var(--text-color);
-    line-height: 1.5;
-    margin: 0 0 1.5em 0;
+    line-height: 1.6;
+    margin: 0 0 1.4em 0;
+    text-align: right;
+    max-width: 620px;
+    margin-left: -1.3em;
+    margin-top: -1.5em;
+    align-self: right;
   }
 
   .hero .btn {
@@ -217,12 +238,11 @@ html {
     text-decoration: none;
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    font-size: 1em;
-    padding: 0.9em 2.6em;
+    font-size: 0.95em;
+    padding: 0.75em 2em;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 5px;
-    
   }
 
   .hero .btn:hover {
@@ -236,10 +256,10 @@ html {
   }
   
   .hero .btn:hover .arrow {
-    transform: translateX(4px);
+    transform: scale(1.2) rotate(15deg);
   }
 
-
+  /* End of Home */
 
   /* Start of Songs Page */
 
