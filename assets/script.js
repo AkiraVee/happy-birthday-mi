@@ -159,7 +159,7 @@ const songs = [
   {
     title:   "Bawat Piyesa",
     artist:  "Munimuni",
-    cover:   "assets/images/bawat_piyesa.jpg",
+    cover:   "assets/images/songs/bawat_piyesa.jpg",
     audio:   "assets/audios/bawat_piyesa.mp3",
     meaning: "This song reminds me of the first time we laughed until we cried. Every time it plays, it takes me back to that exact moment."
   },
