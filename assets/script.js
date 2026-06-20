@@ -1,4 +1,153 @@
 /* ===================
+    Start of Memories
+   =================== */
+ 
+if (document.getElementById('memories-grid')) {
+ 
+  // ─── Memory Data ─────────────────────────────────────────────
+  // type: "image" or "video"
+  // src:  path to the file e.g. "assets/images/memory1.jpg"
+  //       or "assets/videos/memory1.mp4"
+ 
+  const memories = [
+    {
+      type:    "image",
+      src:     "",                              // e.g. "assets/images/memory1.jpg"
+      date:    "January 1, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "February 14, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "March 20, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "April 5, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "video",
+      src:     "",                              // e.g. "assets/videos/memory1.mp4"
+      date:    "May 18, 2024",
+      caption: "Caption for this memory goes here."
+    },
+    {
+      type:    "image",
+      src:     "",
+      date:    "June 21, 2024",
+      caption: "Caption for this memory goes here."
+    },
+  ];
+ 
+  // ─── DOM References ──────────────────────────────────────────
+  const grid       = document.getElementById('memories-grid');
+  const modal      = document.getElementById('memory-modal');
+  const modalMedia = document.getElementById('modal-media');
+  const modalDate  = document.getElementById('modal-date');
+  const modalCap   = document.getElementById('modal-caption');
+  const modalClose = document.getElementById('modal-close');
+ 
+  // ─── Scrapbook Styling Helpers ────────────────────────────────
+  const stickers = [
+    { src: "assets/images/memories/butterfly_graphics.png",  corner: "corner-br", rotate: -6,  size: 124 },
+    { src: "assets/images/memories/flower_1_graphics.png",   corner: "corner-tl", rotate: 4,   size: 94 },
+    { src: "assets/images/memories/star_graphics.png",       corner: "corner-bl", rotate: -8,  size: 108 },
+    { src: "assets/images/memories/flower_2_graphics.png",   corner: "corner-br", rotate: 5,   size: 108 },
+    { src: "assets/images/memories/letter_graphics.png",     corner: "corner-tr", rotate: -8,  size: 86 },
+    { src: "assets/images/memories/headset_graphics.png",    corner: "corner-br", rotate: 36,   size: 104 },
+    { src: "assets/images/memories/stuff_toy_graphics.png",  corner: "corner-bl", rotate: -4,  size: 86 }
+  ];
+  const cardRotations = [-1.8, 1.4, -1.2, 1.8, -1.5, 1.1];
+  const tapeRotations = [-5, 4, -3, 6, -4, 3];
+ 
+  // ─── Build Grid ──────────────────────────────────────────────
+  memories.forEach((mem, i) => {
+    const card = document.createElement('div');
+    card.className = 'memory-card';
+    card.style.setProperty('--rotate', `${cardRotations[i % cardRotations.length]}deg`);
+    card.style.setProperty('--tape-rotate', `${tapeRotations[i % tapeRotations.length]}deg`);
+ 
+    const photo = document.createElement('div');
+    photo.className = 'memory-photo';
+ 
+    if (mem.src) {
+      if (mem.type === 'video') {
+        photo.innerHTML = `<video src="${mem.src}" muted playsinline preload="metadata" class="memory-thumb"></video>`;
+      } else {
+        photo.innerHTML = `<img src="${mem.src}" alt="Memory ${i + 1}" class="memory-thumb">`;
+      }
+    } else {
+      // Placeholder when no src
+      photo.innerHTML = `<div class="memory-placeholder"><span></span></div>`;
+    }
+ 
+    const stickerData = stickers[i % stickers.length];
+    const sticker = document.createElement('img');
+    sticker.className = `memory-sticker ${stickerData.corner}`;
+    sticker.src = stickerData.src;
+    sticker.alt = '';
+    sticker.style.width = `${stickerData.size}px`;
+    sticker.style.transform = `rotate(${stickerData.rotate}deg)`;
+ 
+    card.appendChild(photo);
+    card.appendChild(sticker);
+ 
+    card.addEventListener('click', () => openModal(mem));
+    grid.appendChild(card);
+  });
+ 
+  // ─── Open Modal ──────────────────────────────────────────────
+  function openModal(mem) {
+    modalDate.textContent = mem.date;
+    modalCap.textContent  = mem.caption;
+ 
+    modalMedia.innerHTML = '';
+    if (mem.src) {
+      if (mem.type === 'video') {
+        modalMedia.innerHTML = `<video src="${mem.src}" controls class="modal-media-el"></video>`;
+      } else {
+        modalMedia.innerHTML = `<img src="${mem.src}" alt="Memory" class="modal-media-el">`;
+      }
+    } else {
+      modalMedia.innerHTML = `<div class="modal-placeholder"><span></span></div>`;
+    }
+ 
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+ 
+  // ─── Close Modal ─────────────────────────────────────────────
+  function closeModal() {
+    modal.classList.remove('active');
+    modalMedia.innerHTML = ''; // stop video if playing
+    document.body.style.overflow = '';
+  }
+ 
+  modalClose.addEventListener('click', closeModal);
+ 
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+ 
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+ 
+} // End of Memories
+
+
+/* ===================
     Start of Song
    =================== */
 
@@ -462,150 +611,3 @@ showIntro(0);
 
 // End of Quiz
 
-/* ===================
-    Start of Memories
-   =================== */
- 
-if (document.getElementById('memories-grid')) {
- 
-  // ─── Memory Data ─────────────────────────────────────────────
-  // type: "image" or "video"
-  // src:  path to the file e.g. "assets/images/memory1.jpg"
-  //       or "assets/videos/memory1.mp4"
- 
-  const memories = [
-    {
-      type:    "image",
-      src:     "",                              // e.g. "assets/images/memory1.jpg"
-      date:    "January 1, 2024",
-      caption: "Caption for this memory goes here."
-    },
-    {
-      type:    "image",
-      src:     "",
-      date:    "February 14, 2024",
-      caption: "Caption for this memory goes here."
-    },
-    {
-      type:    "image",
-      src:     "",
-      date:    "March 20, 2024",
-      caption: "Caption for this memory goes here."
-    },
-    {
-      type:    "image",
-      src:     "",
-      date:    "April 5, 2024",
-      caption: "Caption for this memory goes here."
-    },
-    {
-      type:    "video",
-      src:     "",                              // e.g. "assets/videos/memory1.mp4"
-      date:    "May 18, 2024",
-      caption: "Caption for this memory goes here."
-    },
-    {
-      type:    "image",
-      src:     "",
-      date:    "June 21, 2024",
-      caption: "Caption for this memory goes here."
-    },
-  ];
- 
-  // ─── DOM References ──────────────────────────────────────────
-  const grid       = document.getElementById('memories-grid');
-  const modal      = document.getElementById('memory-modal');
-  const modalMedia = document.getElementById('modal-media');
-  const modalDate  = document.getElementById('modal-date');
-  const modalCap   = document.getElementById('modal-caption');
-  const modalClose = document.getElementById('modal-close');
- 
-  // ─── Scrapbook Styling Helpers ────────────────────────────────
-  const stickers = [
-    { src: "assets/images/memories/butterfly_graphics.png",  corner: "corner-br", rotate: -6,  size: 124 },
-    { src: "assets/images/memories/flower_1_graphics.png",   corner: "corner-tl", rotate: 4,   size: 94 },
-    { src: "assets/images/memories/star_graphics.png",       corner: "corner-bl", rotate: -8,  size: 108 },
-    { src: "assets/images/memories/flower_2_graphics.png",   corner: "corner-br", rotate: 5,   size: 108 },
-    { src: "assets/images/memories/letter_graphics.png",     corner: "corner-tr", rotate: -8,  size: 86 },
-    { src: "assets/images/memories/headset_graphics.png",    corner: "corner-br", rotate: 36,   size: 104 },
-    { src: "assets/images/memories/stuff_toy_graphics.png",  corner: "corner-bl", rotate: -4,  size: 86 }
-  ];
-  const cardRotations = [-1.8, 1.4, -1.2, 1.8, -1.5, 1.1];
-  const tapeRotations = [-5, 4, -3, 6, -4, 3];
- 
-  // ─── Build Grid ──────────────────────────────────────────────
-  memories.forEach((mem, i) => {
-    const card = document.createElement('div');
-    card.className = 'memory-card';
-    card.style.setProperty('--rotate', `${cardRotations[i % cardRotations.length]}deg`);
-    card.style.setProperty('--tape-rotate', `${tapeRotations[i % tapeRotations.length]}deg`);
- 
-    const photo = document.createElement('div');
-    photo.className = 'memory-photo';
- 
-    if (mem.src) {
-      if (mem.type === 'video') {
-        photo.innerHTML = `<video src="${mem.src}" muted playsinline preload="metadata" class="memory-thumb"></video>`;
-      } else {
-        photo.innerHTML = `<img src="${mem.src}" alt="Memory ${i + 1}" class="memory-thumb">`;
-      }
-    } else {
-      // Placeholder when no src
-      photo.innerHTML = `<div class="memory-placeholder"><span></span></div>`;
-    }
- 
-    const stickerData = stickers[i % stickers.length];
-    const sticker = document.createElement('img');
-    sticker.className = `memory-sticker ${stickerData.corner}`;
-    sticker.src = stickerData.src;
-    sticker.alt = '';
-    sticker.style.width = `${stickerData.size}px`;
-    sticker.style.transform = `rotate(${stickerData.rotate}deg)`;
- 
-    card.appendChild(photo);
-    card.appendChild(sticker);
- 
-    card.addEventListener('click', () => openModal(mem));
-    grid.appendChild(card);
-  });
- 
-  // ─── Open Modal ──────────────────────────────────────────────
-  function openModal(mem) {
-    modalDate.textContent = mem.date;
-    modalCap.textContent  = mem.caption;
- 
-    modalMedia.innerHTML = '';
-    if (mem.src) {
-      if (mem.type === 'video') {
-        modalMedia.innerHTML = `<video src="${mem.src}" controls class="modal-media-el"></video>`;
-      } else {
-        modalMedia.innerHTML = `<img src="${mem.src}" alt="Memory" class="modal-media-el">`;
-      }
-    } else {
-      modalMedia.innerHTML = `<div class="modal-placeholder"><span></span></div>`;
-    }
- 
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
- 
-  // ─── Close Modal ─────────────────────────────────────────────
-  function closeModal() {
-    modal.classList.remove('active');
-    modalMedia.innerHTML = ''; // stop video if playing
-    document.body.style.overflow = '';
-  }
- 
-  modalClose.addEventListener('click', closeModal);
- 
-  // Close on backdrop click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
-  });
- 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
- 
-} // End of Memories
