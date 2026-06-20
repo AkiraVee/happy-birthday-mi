@@ -520,21 +520,50 @@ if (document.getElementById('memories-grid')) {
   const modalCap   = document.getElementById('modal-caption');
   const modalClose = document.getElementById('modal-close');
  
+  // ─── Scrapbook Styling Helpers ────────────────────────────────
+  const stickers = [
+    { src: "assets/images/memories/butterfly_graphics.png",  corner: "corner-br", rotate: -6,  size: 124 },
+    { src: "assets/images/memories/flower_1_graphics.png",   corner: "corner-tl", rotate: 4,   size: 94 },
+    { src: "assets/images/memories/star_graphics.png",       corner: "corner-bl", rotate: -8,  size: 108 },
+    { src: "assets/images/memories/flower_2_graphics.png",   corner: "corner-br", rotate: 5,   size: 108 },
+    { src: "assets/images/memories/letter_graphics.png",     corner: "corner-tr", rotate: -8,  size: 86 },
+    { src: "assets/images/memories/headset_graphics.png",    corner: "corner-br", rotate: 36,   size: 104 },
+    { src: "assets/images/memories/stuff_toy_graphics.png",  corner: "corner-bl", rotate: -4,  size: 86 }
+  ];
+  const cardRotations = [-1.8, 1.4, -1.2, 1.8, -1.5, 1.1];
+  const tapeRotations = [-5, 4, -3, 6, -4, 3];
+ 
   // ─── Build Grid ──────────────────────────────────────────────
   memories.forEach((mem, i) => {
     const card = document.createElement('div');
     card.className = 'memory-card';
+    card.style.setProperty('--rotate', `${cardRotations[i % cardRotations.length]}deg`);
+    card.style.setProperty('--tape-rotate', `${tapeRotations[i % tapeRotations.length]}deg`);
+ 
+    const photo = document.createElement('div');
+    photo.className = 'memory-photo';
  
     if (mem.src) {
       if (mem.type === 'video') {
-        card.innerHTML = `<video src="${mem.src}" muted playsinline preload="metadata" class="memory-thumb"></video>`;
+        photo.innerHTML = `<video src="${mem.src}" muted playsinline preload="metadata" class="memory-thumb"></video>`;
       } else {
-        card.innerHTML = `<img src="${mem.src}" alt="Memory ${i + 1}" class="memory-thumb">`;
+        photo.innerHTML = `<img src="${mem.src}" alt="Memory ${i + 1}" class="memory-thumb">`;
       }
     } else {
       // Placeholder when no src
-      card.innerHTML = `<div class="memory-placeholder"><span>📷</span></div>`;
+      photo.innerHTML = `<div class="memory-placeholder"><span>📷</span></div>`;
     }
+ 
+    const stickerData = stickers[i % stickers.length];
+    const sticker = document.createElement('img');
+    sticker.className = `memory-sticker ${stickerData.corner}`;
+    sticker.src = stickerData.src;
+    sticker.alt = '';
+    sticker.style.width = `${stickerData.size}px`;
+    sticker.style.transform = `rotate(${stickerData.rotate}deg)`;
+ 
+    card.appendChild(photo);
+    card.appendChild(sticker);
  
     card.addEventListener('click', () => openModal(mem));
     grid.appendChild(card);
@@ -564,7 +593,7 @@ if (document.getElementById('memories-grid')) {
   function closeModal() {
     modal.classList.remove('active');
     modalMedia.innerHTML = ''; // stop video if playing
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = '';
   }
  
   modalClose.addEventListener('click', closeModal);
