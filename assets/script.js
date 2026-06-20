@@ -21,6 +21,60 @@
 
 // End of Nav Highlight
 
+/* ===================
+    Start of Letter Modal
+   =================== */
+
+if (document.getElementById('letter-modal')) {
+
+  // ─── Letter Content ───────────────────────────────────────────
+  // Replace these placeholder values with the real letter whenever ready.
+  const letterGreeting = "Dear Jes,";
+  const letterParagraphs = [
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a placeholder letter — swap this text out whenever you're ready with the real one.",
+    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Until then, just know that every word here will be replaced with something written just for you."
+  ];
+  const letterSignoff = "With love,<br>Me";
+
+  // ─── DOM References ────────────────────────────────────────────
+  const letterModal      = document.getElementById('letter-modal');
+  const openLetterBtn     = document.getElementById('open-letter-btn');
+  const letterModalClose  = document.getElementById('letter-modal-close');
+  const letterGreetingEl  = document.getElementById('letter-greeting');
+  const letterBodyEl      = document.getElementById('letter-body');
+  const letterSignoffEl   = document.getElementById('letter-signoff');
+
+  // Populate letter content from the data above
+  letterGreetingEl.textContent = letterGreeting;
+  letterBodyEl.innerHTML = letterParagraphs.map(p => `<p>${p}</p>`).join('');
+  letterSignoffEl.innerHTML = letterSignoff;
+
+  function openLetterModal() {
+    letterModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLetterModal() {
+    letterModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  openLetterBtn.addEventListener('click', openLetterModal);
+  letterModalClose.addEventListener('click', closeLetterModal);
+
+  // Close on backdrop click
+  letterModal.addEventListener('click', (e) => {
+    if (e.target === letterModal) closeLetterModal();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLetterModal();
+  });
+
+}
+
+// End of Letter Modal
 
 
 /* ===================

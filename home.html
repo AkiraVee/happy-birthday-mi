@@ -53,14 +53,23 @@
         May this year bring you endless joy and success. Happy Birthday! 
       </p>
 
-      <a href = "letter.html" class="btn"> 
+      <button class="btn" id="open-letter-btn"> 
         Open Your Letter  
         <span class="arrow">→</span>
-      </a>
+      </button>
     </div>
 
-
   </section>
+
+    <!-- Letter Modal -->
+  <div class="letter-modal" id="letter-modal">
+    <div class="letter-modal-card">
+      <button class="modal-close" id="letter-modal-close">✕</button>
+      <p class="letter-greeting" id="letter-greeting"></p>
+      <div class="letter-body" id="letter-body"></div>
+      <p class="letter-signoff" id="letter-signoff"></p>
+    </div>
+  </div>
 
   <script src="assets/script.js"> </script>
 
