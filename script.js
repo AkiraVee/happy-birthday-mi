@@ -551,7 +551,7 @@ if (document.getElementById('memories-grid')) {
       }
     } else {
       // Placeholder when no src
-      photo.innerHTML = `<div class="memory-placeholder"><span>📷</span></div>`;
+      photo.innerHTML = `<div class="memory-placeholder"><span></span></div>`;
     }
  
     const stickerData = stickers[i % stickers.length];
@@ -582,7 +582,7 @@ if (document.getElementById('memories-grid')) {
         modalMedia.innerHTML = `<img src="${mem.src}" alt="Memory" class="modal-media-el">`;
       }
     } else {
-      modalMedia.innerHTML = `<div class="modal-placeholder"><span>📷</span></div>`;
+      modalMedia.innerHTML = `<div class="modal-placeholder"><span></span></div>`;
     }
  
     modal.classList.add('active');
