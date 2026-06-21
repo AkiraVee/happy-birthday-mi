@@ -231,38 +231,38 @@ if (document.getElementById('memories-grid')) {
     {
       type:    "image",
       src:     "assets/images/memories/memory_1.jpg",                              // e.g. "assets/images/memories/memory_1.jpg"
-      date:    "January 1, 2024",
-      caption: "Caption for this memory goes here."
+      date:    "February 12, 2024",
+      caption: "We went to Robinsons Manila after classes, we played, did a photobooth, and ate KFC after."
     },
     {
       type:    "image",
       src:     "assets/images/memories/memory_2.jpg",
-      date:    "February 14, 2024",
-      caption: "Caption for this memory goes here."
+      date:    "October 31, 2024",
+      caption: "This was the day we wore our first ring! Although it was cheap, it meant so much to me."
     },
     {
       type:    "image",
       src:     "assets/images/memories/memory_3.jpg",
-      date:    "March 20, 2024",
-      caption: "Caption for this memory goes here."
+      date:    "December 28, 2024",
+      caption: "This was the day we went to IKEA, I had a lot of fun taking candid photos of you."
     },
     {
       type:    "image",
       src:     "assets/images/memories/memory_4.jpg",
-      date:    "April 5, 2024",
-      caption: "Caption for this memory goes here."
+      date:    "June 27, 2025",
+      caption: "We went to the Food Gala Park and MoA to celebrate your birthday even though it was late. We went and bought unli ride tickets but I was too scared to ride some of it, mwehehe. I had a lot of fun. I enjoyed the Ferris Wheel so much."
     },
     {
       type:    "video",
       src:     "assets/images/memories/memory_5.mp4",                              // e.g. "assets/videos/memory1.mp4"
-      date:    "May 18, 2024",
-      caption: "Caption for this memory goes here."
+      date:    "November 13, 2025",
+      caption: "This was the time where we bought flowers for each other, I still remember the moment when I was crossing the sidewalk with the flower, ready to give it to you and not knowing you also have one. We decided to go to Esplanade and take lots of pics. I loved this moment so much."
     },
     {
       type:    "image",
       src:     "assets/images/memories/memory_6.jpg",
-      date:    "June 21, 2024",
-      caption: "Caption for this memory goes here."
+      date:    "March 01, 2026",
+      caption: "Our 4th Anniversary! I was so surprised when you gave me a bouquet of flowers because it was my first time receiving one. I was so spoiled by you that day. We watched Iron Lung, did a photobooth and ate at Marugame Udon after. A week after that i got my bulutong, mwehehe."
     },
   ];
  
