@@ -31,10 +31,14 @@ if (document.getElementById('letter-modal')) {
   // Replace these placeholder values with the real letter whenever ready.
   const letterGreeting = "Dear Jes,";
   const letterParagraphs = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a placeholder letter — swap this text out whenever you're ready with the real one.",
-    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Until then, just know that every word here will be replaced with something written just for you."
+    "Happy Birthday, miiiiii!!! ❤️",
+    "Today is all about you, and I just want to take a moment to tell you how grateful I am that you exist and that I get to be part of your life. Hindi ko man palaging nasasabi, pero you make my days brighter just by being you.",
+    "Thank you for all the love, patience, and happiness that you bring into my life. Salamat sa pagiging pahinga ko sa mga nakakapagod na araw, sa pagiging kakampi ko, at sa pagiging taong gusto kong kausapin tungkol sa kahit ano. The little moments we share may seem ordinary, but they mean so much to me.",
+    "As you celebrate another year of your life, I hope you achieve everything your heart desires. I hope you continue to grow, chase your dreams, and become even happier. And through it all, know that I'll always be cheering for you.",
+    "Thank you for letting me love you and for loving me in return. You're one of the best things that has ever happened to me, and I wouldn't trade what we have for anything.",
+    "Happy Birthday, Mi Amor. I love you today, tomorrow, and every day after that. ❤️"
   ];
-  const letterSignoff = "With love,<br>Me";
+  const letterSignoff = "With love,<br>Mi Amor";
 
   // ─── DOM References ────────────────────────────────────────────
   const letterModal      = document.getElementById('letter-modal');
