@@ -1378,8 +1378,6 @@
   }
 }
 
-
-
 /* ======================================
    Custom Cursor: Interactive Elements
    ====================================== */
@@ -1388,8 +1386,10 @@ a,
 button,
 .btn,
 .quiz-choice:not(.disabled),
+.quiz-restart-btn,
 .memory-card,
 .playlist-item,
+.song-artist-display,
 .arrow-btn,
 .play-btn,
 .progress-bar,
