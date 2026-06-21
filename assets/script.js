@@ -516,33 +516,41 @@ const section2 = {
   questions: [
     {
       type:    "mc",
-      photo:   "assets/images/bawat_piyesa.jpg",
-     question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"
+      photo:   "assets/images/quiz/qs_1.jpg",
+     question: "Where was this photo taken?",
+      choices:  ["Japan", "Food Court", "Gala Food Park", "Food Club"],
+      answer:   "Gala Food Park"
     },
     {
       type:    "tf",
-      photo:   "assets/images/.jpg",
+      photo:   "assets/images/quiz/qs_2.jpg",
       question: "This photo was taken on a special occasion.",
       choices:  ["True", "False"],
       answer:   "True"
     },
     {
       type:    "mc",
-      photo:   "assets/images/.jpg",
-     question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"
+      photo:   "assets/images/quiz/qs_3.jpg",
+     question: "What were we watching that day?",
+      choices:  ["Demon Slayer", "Ready or Not 2", "Mickey 17", "The Conjuring: Last Rites"],
+      answer:   "Mickey 17"
     },
     {
       type:    "mc",
-      photo:   "assets/images/.jpg",
-     question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"
+      photo:   "assets/images/quiz/qs_4.jpg",
+     question: "What were we eating that day?",
+      choices:  ["Buldak, Ramyeon and Milkis", "Slurpee and Hotdog", "Pepperoni and Softdrinks", "MCDO"],
+      answer:   "Buldak, Ramyeon and Milkis"
+    },
+    {
+      type:    "mc",
+      photo:   "assets/images/quiz/qs_5.jpg",
+     question: "How much did we spend that day",
+      choices:  ["900", "1,000", "1,400", "2,000"],
+      answer:   "1,400"
     },
   ]
+
 };
 
 // Result Messages
