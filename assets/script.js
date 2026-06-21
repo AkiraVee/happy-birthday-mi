@@ -160,6 +160,8 @@ if (document.getElementById('memories-grid')) {
  
     if (mem.src) {
       if (mem.type === 'video') {
+        // Grid thumbnail stays muted (autoplaying sound in a 6-up grid would be chaos) —
+        // sound is enabled later, only in the modal, when the person actually opens it.
         photo.innerHTML = `<video src="${mem.src}" muted playsinline preload="metadata" class="memory-thumb"></video>`;
       } else {
         photo.innerHTML = `<img src="${mem.src}" alt="Memory ${i + 1}" class="memory-thumb">`;
@@ -192,7 +194,8 @@ if (document.getElementById('memories-grid')) {
     modalMedia.innerHTML = '';
     if (mem.src) {
       if (mem.type === 'video') {
-        modalMedia.innerHTML = `<video src="${mem.src}" controls class="modal-media-el"></video>`;
+        // Modal playback has sound on, since this is a deliberate "watch this" moment
+        modalMedia.innerHTML = `<video src="${mem.src}" controls autoplay class="modal-media-el"></video>`;
       } else {
         modalMedia.innerHTML = `<img src="${mem.src}" alt="Memory" class="modal-media-el">`;
       }
@@ -444,39 +447,63 @@ const section1 = {
   questions: [
     {
       type:    "mc",
-      question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"        
+      question: "What is your favorite comfort food?",
+      choices:  ["McDo", "KFC", "24 Chicken", "Marugame Udon"],
+      answer:   "24 Chicken"
     },
     {
       type:    "mc",
-      question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"
+      question: "If you could go anywhere, where would you go?",
+      choices:  ["Japan", "New Zealand", "Canada", "Italy"],
+      answer:   "New Zealand"
+    },
+    {
+      type:    "mc",
+      question: "What would you do when you retire?",
+      choices:  ["Own a ranch / Farm", "Open a small cafe", "Travel the world non-stop", "Do absolutely nothing all day"],
+      answer:   "Own a ranch / Farm"
+    },
+    {
+      type:    "mc",
+      question: "How long did it take us to finally kiss?",
+      choices:  ["6 Months", "3 Weeks", "2 Years", "A Year"],
+      answer:   "A Year"
+    },
+    {
+      type:    "mc",
+      question: "What is your go-to order?",
+      choices:  ["Coffee", "Frappe", "Milktea", "Soda"],
+      answer:   "Milktea"
+    },
+    {
+      type:    "mc",
+      question: "Who is your daddy?",
+      choices:  ["Mihawk", "Lantis", "Wala sa nabanggit", "All of the above"],
+      answer:   "Mihawk"
     },
     {
       type:    "tf",
-      question: "something",
+      question: "Our anniversary is March 01, 2020.",
+      choices:  ["True", "False"],
+      answer:   "False"
+    },
+    {
+      type:    "tf",
+      question: "Your favorite color right now is blue.",
       choices:  ["True", "False"],
       answer:   "True"
     },
     {
-      type:    "mc",
-      question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"
+      type:    "tf",
+      question: "Your favorite Strawhat member is Zoro.",
+      choices:  ["True", "False"],
+      answer:   "False"
     },
     {
       type:    "tf",
-      question: "something",
+      question: "Your favorite artist is Melanie Martinez.",
       choices:  ["True", "False"],
       answer:   "True"
-    },
-    {
-      type:    "mc",
-      question: "something",
-      choices:  ["A", "B", "C", "D"],
-      answer:   "C"
     },
   ]
 };
@@ -689,4 +716,3 @@ showIntro(0);
 }  
 
 // End of Quiz
-
