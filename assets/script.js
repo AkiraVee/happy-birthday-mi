@@ -85,43 +85,43 @@ if (document.getElementById('memories-grid')) {
  
   // ─── Memory Data ─────────────────────────────────────────────
   // type: "image" or "video"
-  // src:  path to the file e.g. "assets/images/memory1.jpg"
+  // src:  path to the file e.g. "assets/images/memories/memory_1.jpg"
   //       or "assets/videos/memory1.mp4"
  
   const memories = [
     {
       type:    "image",
-      src:     "",                              // e.g. "assets/images/memory1.jpg"
+      src:     "assets/images/memories/memory_1.jpg",                              // e.g. "assets/images/memories/memory_1.jpg"
       date:    "January 1, 2024",
       caption: "Caption for this memory goes here."
     },
     {
       type:    "image",
-      src:     "",
+      src:     "assets/images/memories/memory_2.jpg",
       date:    "February 14, 2024",
       caption: "Caption for this memory goes here."
     },
     {
       type:    "image",
-      src:     "",
+      src:     "assets/images/memories/memory_3.jpg",
       date:    "March 20, 2024",
       caption: "Caption for this memory goes here."
     },
     {
       type:    "image",
-      src:     "",
+      src:     "assets/images/memories/memory_4.jpg",
       date:    "April 5, 2024",
       caption: "Caption for this memory goes here."
     },
     {
       type:    "video",
-      src:     "",                              // e.g. "assets/videos/memory1.mp4"
+      src:     "assets/images/memories/memory_5.mp4",                              // e.g. "assets/videos/memory1.mp4"
       date:    "May 18, 2024",
       caption: "Caption for this memory goes here."
     },
     {
       type:    "image",
-      src:     "",
+      src:     "assets/images/memories/memory_6.jpg",
       date:    "June 21, 2024",
       caption: "Caption for this memory goes here."
     },
@@ -240,35 +240,35 @@ const songs = [
     artist:  "Munimuni",
     cover:   "assets/images/songs/bawat_piyesa.jpg",
     audio:   "assets/audios/bawat_piyesa.mp3",
-    meaning: "This song reminds me of the first time we laughed until we cried. Every time it plays, it takes me back to that exact moment."
+    meaning: "This song reminds me of us because we're the kind of people who hold on to moments a little longer than everyone else. We stay in conversations, memories, and feelings because we already know how much they'll mean someday. Every time I hear this song, it feels like a reminder of all the little moments with you that I never want to rush through."
   },
   {
     title:   "Last Night On Earth",
     artist:  "Green Day",
-    cover:   "",
+    cover:   "assets/images/songs/last_night_on_earth.jpg",
     audio:   "assets/audios/last_night_on_earth.mp3",
-    meaning: "This one came on during one of our late-night drives. The lyrics felt like they were written just for us."
+    meaning: "Whenever I listen to this song, I think about how easy it is to take ordinary days for granted—until you're with someone who makes them feel extraordinary. Being with you makes me want to appreciate every moment, every conversation, every late-night call, and every memory we create. If every night were my last, I'd still want to spend it with you."
   },
   {
-    title:   "Song Title 3",
-    artist:  "Artist Name",
-    cover:   "",
-    audio:   "assets/audios/.mp3",
-    meaning: "I heard this and immediately thought of you. It captures everything I struggle to put into words."
+    title:   "Kabisado",
+    artist:  "IV of Spades",
+    cover:   "assets/images/songs/kabisado.jpg",
+    audio:   "assets/audios/kabisado.mp3",
+    meaning: "Somewhere along the way, knowing you stopped being something I had to try to do—it just happened naturally. I know the little things about you, the habits you don't even notice, the way you react to certain things, and the small details that make you who you are. You've become someone I know by heart, and that's one of my favorite things about us."
   },
   {
-    title:   "Song Title 4",
-    artist:  "Artist Name",
-    cover:   "",
-    audio:   "assets/audios/.mp3",
-    meaning: "This song was playing the day everything changed. It holds a very special place in my heart."
+    title:   "Secret Door",
+    artist:  "Arctic Monkeys",
+    cover:   "assets/images/songs/secret_door.jpg",
+    audio:   "assets/audios/secret_door.mp3",
+    meaning: "What I love about you is that you're completely yourself, even when the world expects something different. Being with you feels like stepping away from all the noise and expectations around us. It's like we've created our own little space where nothing else matters, and honestly, that's where I feel most at peace."
   },
   {
-    title:   "Song Title 5",
-    artist:  "Artist Name",
-    cover:   "",
-    audio:   "assets/audios/.mp3",
-    meaning: "A song that perfectly describes how grateful I am to have you in my life. Here's to many more memories."
+    title:   "Until I Found You",
+    artist:  "Stephen Sanchez",
+    cover:   "assets/images/songs/until_i_found_you.jpg",
+    audio:   "assets/audios/until_i_found_you.mp3",
+    meaning: "Before you, there were things I was still trying to figure out, feelings I couldn't quite explain, and pieces of myself that felt unfinished. Then you came into my life, and somehow everything felt a little clearer. This song reminds me that finding you wasn't something I'll ever take for granted, because you're one of the best things that's ever happened to me."
   }
 ];
  
