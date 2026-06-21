@@ -21,6 +21,141 @@
 
 // End of Nav Highlight
 
+
+/* ===================
+    Start of Cursor Trail
+   =================== */
+ 
+// A white/blue energy-streak trail following the cursor, inspired by Zoltraak (Frieren).
+// Skips touch-only devices since there's no real cursor to trail there.
+(function cursorTrail() {
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+ 
+  const canvas = document.createElement('canvas');
+  canvas.id = 'cursor-trail-canvas';
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '9999';
+  document.body.appendChild(canvas);
+ 
+  const ctx = canvas.getContext('2d');
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+ 
+  window.addEventListener('resize', () => {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  });
+ 
+  // Recent points along the streak, each with its own fade-out life
+  let points = [];
+  // Small spark particles that peel off the streak
+  let sparks = [];
+ 
+  let lastX = null;
+  let lastY = null;
+ 
+  window.addEventListener('mousemove', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+ 
+    points.push({ x, y, life: 1 });
+    if (points.length > 26) points.shift();
+ 
+    // Occasionally spawn a spark that drifts off the line
+    if (lastX !== null) {
+      const dx = x - lastX;
+      const dy = y - lastY;
+      const dist = Math.hypot(dx, dy);
+      if (dist > 3 && Math.random() < 0.7) {
+        const angle = Math.atan2(dy, dx) + (Math.random() - 0.5) * 1.4;
+        const speed = 0.6 + Math.random() * 1.4;
+        sparks.push({
+          x, y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          size: 1.4 + Math.random() * 2.2
+        });
+      }
+    }
+    lastX = x;
+    lastY = y;
+  });
+ 
+  function draw() {
+    ctx.clearRect(0, 0, width, height);
+ 
+    // Fade out points that haven't moved recently
+    points.forEach(p => p.life *= 0.95);
+    points = points.filter(p => p.life > 0.03);
+ 
+    // Draw the glowing white-blue streak through recent points
+    if (points.length > 1) {
+      ctx.save();
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+ 
+      for (let i = 1; i < points.length; i++) {
+        const p0 = points[i - 1];
+        const p1 = points[i];
+        const alpha = Math.min(p0.life, p1.life);
+        if (alpha <= 0.03) continue;
+ 
+        // Outer glow
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.lineTo(p1.x, p1.y);
+        ctx.strokeStyle = `rgba(80, 170, 230, ${alpha * 0.45})`;
+        ctx.lineWidth = 14 * alpha;
+        ctx.shadowColor = 'rgba(100, 190, 255, 0.85)';
+        ctx.shadowBlur = 18;
+        ctx.stroke();
+ 
+        // Sharp inner core
+        ctx.beginPath();
+        ctx.moveTo(p0.x, p0.y);
+        ctx.lineTo(p1.x, p1.y);
+        ctx.strokeStyle = `rgba(235, 248, 255, ${alpha})`;
+        ctx.lineWidth = 3.2 * alpha;
+        ctx.shadowBlur = 0;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+ 
+    // Sparks drifting off the streak
+    ctx.save();
+    sparks.forEach(s => {
+      s.x += s.vx;
+      s.y += s.vy;
+      s.life *= 0.92;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.size * s.life, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(210, 235, 255, ${s.life})`;
+      ctx.shadowColor = 'rgba(110, 190, 255, 0.9)';
+      ctx.shadowBlur = 9;
+      ctx.fill();
+    });
+    sparks = sparks.filter(s => s.life > 0.03);
+    ctx.restore();
+ 
+    requestAnimationFrame(draw);
+  }
+ 
+  draw();
+})();
+ 
+// End of Cursor Trail
+
 /* ===================
     Start of Letter Modal
    =================== */
