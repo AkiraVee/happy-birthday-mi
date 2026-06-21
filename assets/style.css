@@ -57,6 +57,7 @@
   body {
     background-color: var(--background-color);
     font-family: 'Playfair Display', serif;
+    cursor: url('images/cursor/staff_cursor.png') 4 4, auto;
   }
 
   .landing { 
@@ -756,14 +757,17 @@
 /* Memory photo */
 .quiz-photo-wrap {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  max-height: 200px;
+  max-height: 320px;
+  margin-bottom: 0.6em;
+  box-shadow: 0 8px 24px rgba(44, 95, 119, 0.18);
 }
  
 .quiz-photo-wrap img {
   width: 100%;
   height: 100%;
+  min-height: 220px;
   object-fit: cover;
   display: block;
 }
@@ -1376,4 +1380,22 @@
   body {
     overflow: hidden;
   }
+}
+
+
+/* ======================================
+   Custom Cursor: Interactive Elements
+   ====================================== */
+
+a,
+button,
+.btn,
+.quiz-choice:not(.disabled),
+.memory-card,
+.playlist-item,
+.arrow-btn,
+.play-btn,
+.progress-bar,
+.modal-close {
+  cursor: url('images/cursor/face_cursor.png') 32 32, pointer;
 }
